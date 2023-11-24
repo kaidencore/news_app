@@ -61,8 +61,9 @@ class _LandingPageState extends State<LandingPage> {
                         borderRadius: BorderRadius.circular(30)),
                     child: Center(
                       child: GestureDetector(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> Home()));
+                        onTap: () {
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) => Home()));
                         },
                         child: Text("Get Started",
                             style: TextStyle(

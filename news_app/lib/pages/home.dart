@@ -7,6 +7,7 @@ import 'package:news_app/models/slider_model.dart';
 import 'package:news_app/pages/all_news.dart';
 import 'package:news_app/pages/article_view.dart';
 import 'package:news_app/pages/category_news.dart';
+import 'package:news_app/pages/newshome.dart';
 import 'package:news_app/services/data.dart';
 import 'package:news_app/services/news.dart';
 import 'package:news_app/services/slider_data.dart';
@@ -46,6 +47,44 @@ class _HomeState extends State<Home> {
     Sliders slider = Sliders();
     await slider.getSlider();
     sliders = slider.sliders;
+  }
+
+  int botNavBarOption = 0;
+
+  void botNavBarTap(int indexBnb) {
+    setState(() {
+      botNavBarOption = indexBnb;
+
+      if (indexBnb == 0) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => Home()));
+      } else if (indexBnb == 1) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => NewsHome()));
+      } else if (indexBnb == 2) {}
+    });
+  }
+
+  BottomNavigationBar buildBottomNavigationBar(BuildContext context) {
+    return BottomNavigationBar(
+      selectedItemColor: const Color(0xFF0D1333),
+      currentIndex: botNavBarOption,
+      onTap: botNavBarTap,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_filled),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.newspaper),
+          label: 'News',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
+    );
   }
 
   @override
@@ -105,8 +144,12 @@ class _HomeState extends State<Home> {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0)),
                           GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> AllNews(news: "Breaking")));
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          AllNews(news: "Breaking")));
                             },
                             child: Text("View All",
                                 style: TextStyle(
@@ -155,8 +198,12 @@ class _HomeState extends State<Home> {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0)),
                           GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> AllNews(news: "Your")));
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          AllNews(news: "Your")));
                             },
                             child: Text("View All",
                                 style: TextStyle(
@@ -182,11 +229,12 @@ class _HomeState extends State<Home> {
                                 imageUrl: articles[index].urlToImage!,
                                 title: articles[index].title!);
                           }),
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
+      bottomNavigationBar: buildBottomNavigationBar(context),
     );
   }
 
