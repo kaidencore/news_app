@@ -113,17 +113,17 @@ class _AboutState extends State<About> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                DeveloperCard(
-                  imagePath: 'images/dev1.jpg', // Replace with developer image
-                  name: 'Developer 1',
+                DeveloperID(
+                  imagePath: 'images/dev1.jpg',
+                  name: 'Alexander S. Malic',
                 ),
-                DeveloperCard(
-                  imagePath: 'images/dev2.png', // Replace with developer image
-                  name: 'Developer 2',
+                DeveloperID(
+                  imagePath: 'images/dev2.png',
+                  name: 'Mary Eddythe M. Sornito',
                 ),
-                DeveloperCard(
-                  imagePath: 'images/dev3.jpg', // Replace with developer image
-                  name: 'Developer 3',
+                DeveloperID(
+                  imagePath: 'images/dev3.jpg',
+                  name: 'Kyle G. Velez',
                 ),
               ],
             ),
@@ -135,11 +135,11 @@ class _AboutState extends State<About> {
   }
 }
 
-class DeveloperCard extends StatelessWidget {
+class DeveloperID extends StatelessWidget {
   final String imagePath;
   final String name;
 
-  const DeveloperCard({
+  const DeveloperID({
     required this.imagePath,
     required this.name,
   });
@@ -160,7 +160,10 @@ class DeveloperCard extends StatelessWidget {
           ),
         ),
         SizedBox(height: 8),
-        Text(name),
+        Text(
+          name,
+          style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold),
+        ),
       ],
     );
   }
