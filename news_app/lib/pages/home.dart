@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:news_app/models/article_model.dart';
 import 'package:news_app/models/category_model.dart';
 import 'package:news_app/models/slider_model.dart';
+import 'package:news_app/pages/about.dart';
 import 'package:news_app/pages/all_news.dart';
 import 'package:news_app/pages/article_view.dart';
 import 'package:news_app/pages/category_news.dart';
 import 'package:news_app/pages/newshome.dart';
 import 'package:news_app/pages/profile.dart';
+import 'package:news_app/pages/settings.dart';
 import 'package:news_app/services/data.dart';
 import 'package:news_app/services/news.dart';
 import 'package:news_app/services/slider_data.dart';
@@ -112,6 +114,56 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         backgroundColor: Color(0xFF001747),
         elevation: 0.0,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xFF001747),
+              ),
+              child: Text(
+                'Welcome, Mary!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontFamily: 'Lora',
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.home_filled),
+              title: const Text('Home'),
+              onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Home()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              onTap: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => Settings()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.info),
+              title: const Text('About Us'),
+              onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => About()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Logout'),
+              onTap: () {},
+            ),
+          ],
+        ),
       ),
       body: _loading
           ? Center(child: CircularProgressIndicator())
