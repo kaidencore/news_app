@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/pages/sign_in.dart';
 
 import 'home.dart';
 
@@ -62,8 +63,10 @@ class _LandingPageState extends State<LandingPage> {
                     child: Center(
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (context) => Home()));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Signin()));
                         },
                         child: Text("Get Started",
                             style: TextStyle(
