@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/pages/home.dart';
-import 'package:news_app/pages/profile.dart';
+import 'package:news_app/pages/newshome.dart';
 
-class NewsHome extends StatefulWidget {
-  const NewsHome({super.key});
+class Profile extends StatefulWidget {
+  const Profile({super.key});
 
   @override
-  State<NewsHome> createState() => _NewsHomeState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _NewsHomeState extends State<NewsHome> {
-  int botNavBarOption = 1;
+class _ProfileState extends State<Profile> {
+  int botNavBarOption = 2;
 
   void botNavBarTap(int indexBnb) {
     setState(() {

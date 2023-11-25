@@ -8,6 +8,7 @@ import 'package:news_app/pages/all_news.dart';
 import 'package:news_app/pages/article_view.dart';
 import 'package:news_app/pages/category_news.dart';
 import 'package:news_app/pages/newshome.dart';
+import 'package:news_app/pages/profile.dart';
 import 'package:news_app/services/data.dart';
 import 'package:news_app/services/news.dart';
 import 'package:news_app/services/slider_data.dart';
@@ -61,7 +62,10 @@ class _HomeState extends State<Home> {
       } else if (indexBnb == 1) {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => NewsHome()));
-      } else if (indexBnb == 2) {}
+      } else if (indexBnb == 2) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => Profile()));
+      }
     });
   }
 
