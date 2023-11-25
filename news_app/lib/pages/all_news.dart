@@ -29,18 +29,14 @@ class _AllNewsState extends State<AllNews> {
     News newsclass = News();
     await newsclass.getNews();
     articles = newsclass.news;
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   getSlider() async {
     Sliders slider = Sliders();
     await slider.getSlider();
     sliders = slider.sliders;
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override
@@ -58,22 +54,31 @@ class _AllNewsState extends State<AllNews> {
         centerTitle: true,
         backgroundColor: Color(0xFF001747),
         elevation: 0.0,
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 10.0),
         child: ListView.builder(
-          shrinkWrap: true,
-          physics: ClampingScrollPhysics(),
-          itemCount: widget.news=="Breaking"?  sliders.length: articles.length,
-          itemBuilder: (context, index) {
-            return AllNewsSection(
-              desc: widget.news=="Breaking"? sliders[index].description!: articles[index].description!,
-              image: widget.news=="Breaking"? sliders[index].urlToImage!: articles[index].urlToImage!,
-              title: widget.news=="Breaking"? sliders[index].title!: articles[index].title!,
-              url: widget.news=="Breaking"? sliders[index].url!: articles[index].url!,
-            );
-          }),
-
+            shrinkWrap: true,
+            physics: ClampingScrollPhysics(),
+            itemCount:
+                widget.news == "Breaking" ? sliders.length : articles.length,
+            itemBuilder: (context, index) {
+              return AllNewsSection(
+                desc: widget.news == "Breaking"
+                    ? sliders[index].description!
+                    : articles[index].description!,
+                image: widget.news == "Breaking"
+                    ? sliders[index].urlToImage!
+                    : articles[index].urlToImage!,
+                title: widget.news == "Breaking"
+                    ? sliders[index].title!
+                    : articles[index].title!,
+                url: widget.news == "Breaking"
+                    ? sliders[index].url!
+                    : articles[index].url!,
+              );
+            }),
       ),
     );
   }
@@ -81,32 +86,50 @@ class _AllNewsState extends State<AllNews> {
 
 class AllNewsSection extends StatelessWidget {
   String image, desc, title, url;
-  AllNewsSection({required this.image, required this.desc, required this.title, required this.url});
+  AllNewsSection(
+      {required this.image,
+      required this.desc,
+      required this.title,
+      required this.url});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> ArticleView(blogUrl: url)));
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => ArticleView(blogUrl: url)));
       },
       child: Container(
           child: Column(
-            children: [
-              SizedBox(height: 5.0,),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: CachedNetworkImage(
-                    imageUrl: image,
-                    width: MediaQuery.of(context).size.width,
-                    height: 200,
-                    fit: BoxFit.cover),
-              ),
-              SizedBox(height: 5.0,),
-              Text(title, maxLines: 2, style: TextStyle(color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.bold)),
-              Text(desc, maxLines: 3, style: TextStyle(color: Colors.black, fontSize: 14.0)),
-              SizedBox(height: 20.0,),
-            ],
-          )),
+        children: [
+          SizedBox(
+            height: 5.0,
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: CachedNetworkImage(
+                imageUrl: image,
+                width: MediaQuery.of(context).size.width,
+                height: 200,
+                fit: BoxFit.cover),
+          ),
+          SizedBox(
+            height: 5.0,
+          ),
+          Text(title,
+              maxLines: 2,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold)),
+          Text(desc,
+              maxLines: 3,
+              style: TextStyle(color: Colors.black, fontSize: 14.0)),
+          SizedBox(
+            height: 20.0,
+          ),
+        ],
+      )),
     );
   }
 }

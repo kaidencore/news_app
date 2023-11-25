@@ -46,6 +46,7 @@ class _CategoryNewsState extends State<CategoryNews> {
           centerTitle: true,
           backgroundColor: Color(0xFF001747),
           elevation: 0.0,
+          iconTheme: IconThemeData(color: Colors.white),
         ),
         body: Container(
           margin: EdgeInsets.symmetric(horizontal: 10.0),
@@ -55,10 +56,10 @@ class _CategoryNewsState extends State<CategoryNews> {
               itemCount: categories.length,
               itemBuilder: (context, index) {
                 return ShowCategory(
-                    desc: categories[index].description!,
-                    image: categories[index].urlToImage!,
-                    title: categories[index].title!,
-                    url: categories[index].url!,
+                  desc: categories[index].description!,
+                  image: categories[index].urlToImage!,
+                  title: categories[index].title!,
+                  url: categories[index].url!,
                 );
               }),
         ));
@@ -67,18 +68,25 @@ class _CategoryNewsState extends State<CategoryNews> {
 
 class ShowCategory extends StatelessWidget {
   String image, desc, title, url;
-  ShowCategory({required this.image, required this.desc, required this.title, required this.url});
+  ShowCategory(
+      {required this.image,
+      required this.desc,
+      required this.title,
+      required this.url});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> ArticleView(blogUrl: url)));
-    },
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => ArticleView(blogUrl: url)));
+      },
       child: Container(
           child: Column(
         children: [
-          SizedBox(height: 5.0,),
+          SizedBox(
+            height: 5.0,
+          ),
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: CachedNetworkImage(
@@ -87,10 +95,21 @@ class ShowCategory extends StatelessWidget {
                 height: 200,
                 fit: BoxFit.cover),
           ),
-          SizedBox(height: 5.0,),
-          Text(title, maxLines: 2, style: TextStyle(color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.bold)),
-          Text(desc, maxLines: 3, style: TextStyle(color: Colors.black, fontSize: 14.0)),
-          SizedBox(height: 20.0,),
+          SizedBox(
+            height: 5.0,
+          ),
+          Text(title,
+              maxLines: 2,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold)),
+          Text(desc,
+              maxLines: 3,
+              style: TextStyle(color: Colors.black, fontSize: 14.0)),
+          SizedBox(
+            height: 20.0,
+          ),
         ],
       )),
     );

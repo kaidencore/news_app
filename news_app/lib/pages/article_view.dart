@@ -30,6 +30,7 @@ class _ArticleViewState extends State<ArticleView> {
           centerTitle: true,
           backgroundColor: Color(0xFF001747),
           elevation: 0.0,
+          iconTheme: IconThemeData(color: Colors.white),
         ),
         body: Container(
           child: WebView(

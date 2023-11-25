@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:news_app/pages/home.dart';
 import 'package:news_app/pages/settings.dart';
@@ -13,7 +15,7 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFF102E44),
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -88,37 +90,51 @@ class _AboutState extends State<About> {
           children: [
             SizedBox(height: 20),
             Container(
-              width: 200,
-              height: 150,
+              width: 350,
+              height: 280,
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black54,
+                    spreadRadius: 0.1,
+                    blurRadius: 1,
+                  ),
+                ],
                 image: DecorationImage(
                   image: AssetImage('images/logo.png'),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 'Edithor.ial is your trusted companion in staying informed. As a reliable news application, we are committed to delivering accurate, up-to-date news from around the world. With a focus on credibility and trustworthiness, we curate diverse news stories, offering a comprehensive view of current events, politics, technology, entertainment, and more. Our platform ensures that users receive factual information, empowering them to make informed decisions and stay updated in an ever-evolving world.',
                 textAlign: TextAlign.justify,
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white),
                 softWrap: true,
               ),
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 30),
             Text(
               "Developers",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 DeveloperID(
                   imagePath: 'images/dev1.jpg',
-                  name: 'Alexander S. Malic',
+                  name: 'Josef Alexander S. Malic',
                 ),
                 DeveloperID(
                   imagePath: 'images/dev2.png',
@@ -165,7 +181,8 @@ class DeveloperID extends StatelessWidget {
         SizedBox(height: 8),
         Text(
           name,
-          style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 8, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ],
     );
