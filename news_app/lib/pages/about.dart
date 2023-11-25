@@ -87,12 +87,10 @@ class _AboutState extends State<About> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 20),
-            // Logo image
             Container(
-              width: 150,
+              width: 200,
               height: 150,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(75),
                 image: DecorationImage(
                   image: AssetImage('images/logo.png'),
                   fit: BoxFit.cover,
@@ -103,13 +101,18 @@ class _AboutState extends State<About> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                'Your company description goes here. '
-                'You can briefly introduce your team, goals, and more.',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16),
+                'Edithor.ial is your trusted companion in staying informed. As a reliable news application, we are committed to delivering accurate, up-to-date news from around the world. With a focus on credibility and trustworthiness, we curate diverse news stories, offering a comprehensive view of current events, politics, technology, entertainment, and more. Our platform ensures that users receive factual information, empowering them to make informed decisions and stay updated in an ever-evolving world.',
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                softWrap: true,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 50),
+            Text(
+              "Developers",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
