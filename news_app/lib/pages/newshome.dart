@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/pages/about.dart';
 import 'package:news_app/pages/home.dart';
 import 'package:news_app/pages/profile.dart';
+import 'package:news_app/pages/settings.dart';
 
 class NewsHome extends StatefulWidget {
   const NewsHome({super.key});
@@ -56,22 +58,72 @@ class _NewsHomeState extends State<NewsHome> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
+        backgroundColor: Color(0xFF001747),
+        elevation: 0.0,
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Padding(
+          padding: EdgeInsets.only(right: 45.0),
+          child: Center(
+            child: Text(
               "Edithor.ial",
               style: TextStyle(
-                  fontFamily: 'Lora',
-                  fontSize: 18,
+                fontFamily: 'Lora',
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xFF001747),
+              ),
+              child: Text(
+                'Welcome, Mary!',
+                style: TextStyle(
                   color: Colors.white,
-                  fontWeight: FontWeight.bold),
+                  fontSize: 24,
+                  fontFamily: 'Lora',
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.home_filled),
+              title: const Text('Home'),
+              onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Home()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              onTap: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => Settings()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.info),
+              title: const Text('About Us'),
+              onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => About()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Logout'),
+              onTap: () {},
             ),
           ],
         ),
-        centerTitle: true,
-        backgroundColor: Color(0xFF001747),
-        elevation: 0.0,
       ),
       bottomNavigationBar: buildBottomNavigationBar(context),
     );

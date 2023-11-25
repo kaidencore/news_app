@@ -98,23 +98,23 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Edithor.ial",
-              style: TextStyle(
-                  fontFamily: 'Lora',
-                  fontSize: 18,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-        centerTitle: true,
         backgroundColor: Color(0xFF001747),
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.white),
+        title: Padding(
+          padding: EdgeInsets.only(right: 45.0),
+          child: Center(
+            child: Text(
+              "Edithor.ial",
+              style: TextStyle(
+                fontFamily: 'Lora',
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
       ),
       drawer: Drawer(
         child: ListView(
