@@ -82,172 +82,86 @@ class _AboutState extends State<About> {
           ],
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Image.asset(
-                    'images/logo.jpg',
-                    fit: BoxFit.contain,
-                    height: 175,
-                    width: 175,
-                  ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: 20),
+            // Logo image
+            Container(
+              width: 150,
+              height: 150,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(75),
+                image: DecorationImage(
+                  image: AssetImage('images/logo.png'),
+                  fit: BoxFit.cover,
                 ),
-                const SizedBox(width: 20),
-                const Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'The News Company Inc.',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Lora",
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        """The application was created for the subject, Application Development. It was founded by three individuals who are eager to learn about app development.""",
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontFamily: "SpaceMono",
-                          fontWeight: FontWeight.w200,
-                        ),
-                      ),
-                      Text(
-                        """Furthermore, this app aims to deliver news to users so that they are aware of the events happening around them.""",
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontFamily: "SpaceMono",
-                          fontWeight: FontWeight.w200,
-                        ),
-                      ),
-                    ],
-                  ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                'Your company description goes here. '
+                'You can briefly introduce your team, goals, and more.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                DeveloperCard(
+                  imagePath: 'images/dev1.jpg', // Replace with developer image
+                  name: 'Developer 1',
+                ),
+                DeveloperCard(
+                  imagePath: 'images/dev2.png', // Replace with developer image
+                  name: 'Developer 2',
+                ),
+                DeveloperCard(
+                  imagePath: 'images/dev3.jpg', // Replace with developer image
+                  name: 'Developer 3',
                 ),
               ],
             ),
-          ),
-          const SizedBox(height: 25),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Board of Directors',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: "Lora",
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 1,
-                            ),
-                          ),
-                          child: ClipOval(
-                            child: Image.asset(
-                              "images/dev1.jpg",
-                              height: 75,
-                              width: 75,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          'Alexander Malic',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: "Lora",
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 1,
-                            ),
-                          ),
-                          child: ClipOval(
-                            child: Image.asset(
-                              'images/dev2.png',
-                              height: 75,
-                              width: 75,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          'Mary Eddythe Sornito',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: "Lora",
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 1,
-                            ),
-                          ),
-                          child: ClipOval(
-                            child: Image.asset(
-                              'images/dev3.jpg',
-                              height: 75,
-                              width: 75,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          'Kyle G. Velez',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: "Lora",
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
+            SizedBox(height: 20),
+          ],
+        ),
       ),
+    );
+  }
+}
+
+class DeveloperCard extends StatelessWidget {
+  final String imagePath;
+  final String name;
+
+  const DeveloperCard({
+    required this.imagePath,
+    required this.name,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+            image: DecorationImage(
+              image: AssetImage(imagePath),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        SizedBox(height: 8),
+        Text(name),
+      ],
     );
   }
 }
