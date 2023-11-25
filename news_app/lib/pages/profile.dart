@@ -43,7 +43,7 @@ class _ProfileState extends State<Profile> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.newspaper),
-          label: 'News',
+          label: 'Newsstand',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
@@ -64,11 +64,10 @@ class _ProfileState extends State<Profile> {
             color: Colors.black26,
             spreadRadius: 1,
             blurRadius: 3,
-            offset: Offset(0, 3),
+            offset: Offset(0, 1),
           ),
         ],
-        border: Border.all(
-            style: BorderStyle.solid, width: 1.0, color: Colors.black12),
+        border: Border.all(color: Colors.black54, width: 1.0),
       ),
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       margin: EdgeInsets.all(3.0),
@@ -78,11 +77,11 @@ class _ProfileState extends State<Profile> {
           if (imageUrl != null)
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.black54, width: 1),
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(color: Colors.black, width: 1.2),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(15),
                 child: Image.network(
                   imageUrl,
                   width: 24,
@@ -97,7 +96,9 @@ class _ProfileState extends State<Profile> {
           Text(
             label ?? '',
             style: TextStyle(
-                color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700),
+                color: Color.fromARGB(255, 255, 255, 255),
+                fontSize: 13,
+                fontWeight: FontWeight.w700),
           ),
         ],
       ),
@@ -248,18 +249,18 @@ class _ProfileState extends State<Profile> {
                       children: [
                         _buildInterestCard(
                             iconData: Icons.computer,
-                            label: 'Technology',
-                            bgColor: Color.fromARGB(255, 22, 32, 163)),
+                            label: 'Tech',
+                            bgColor: Color(0xFF001747)),
                         _buildInterestCard(
                             imageUrl:
                                 "https://st3.depositphotos.com/1071909/19574/i/450/depositphotos_195745476-stock-photo-artificial-intelligence-ai.jpg",
                             label: 'AI',
-                            bgColor: Color.fromARGB(255, 104, 11, 135)),
+                            bgColor: Color(0xFF001747)),
                         _buildInterestCard(
                             imageUrl:
                                 'https://media.istockphoto.com/id/1252858062/photo/beautiful-woman-wearing-stylish-sunglasses.jpg?s=612x612&w=0&k=20&c=Mn2QI1jobjZur6GCS19KNkencE72yMDPR560leEjWm4=',
                             label: 'Fashion',
-                            bgColor: Color.fromARGB(255, 154, 23, 23)),
+                            bgColor: Color(0xFF001747)),
                       ],
                     ),
                   ],

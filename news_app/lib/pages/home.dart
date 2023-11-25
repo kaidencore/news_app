@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.newspaper),
-          label: 'News',
+          label: 'Newsstand',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),

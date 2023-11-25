@@ -43,13 +43,65 @@ class _NewsHomeState extends State<NewsHome> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.newspaper),
-          label: 'News',
+          label: 'Newsstand',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label: 'Profile',
         ),
       ],
+    );
+  }
+
+  Widget _buildGenreWidget(String genre, List<Widget> sourceWidgets) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          genre,
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: 20),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: sourceWidgets,
+          ),
+        ),
+        SizedBox(height: 20),
+        Divider(),
+        SizedBox(height: 20),
+      ],
+    );
+  }
+
+  Widget _buildSourceWidget(String name, String logoPath) {
+    return Padding(
+      padding: EdgeInsets.only(right: 16),
+      child: Column(
+        children: [
+          CircleAvatar(
+            radius: 30,
+            backgroundImage: AssetImage(logoPath),
+          ),
+          SizedBox(height: 8),
+          Text(
+            name,
+            style: TextStyle(fontSize: 12),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSuggestionIndicator() {
+    return Container(
+      width: 10,
+      height: 10,
+      decoration: BoxDecoration(
+        color: Colors.orange,
+        shape: BoxShape.circle,
+      ),
     );
   }
 
@@ -124,6 +176,34 @@ class _NewsHomeState extends State<NewsHome> {
             ),
           ],
         ),
+      ),
+      body: ListView(
+        padding: EdgeInsets.all(12),
+        children: [
+          _buildGenreWidget('Science and Technology', [
+            _buildSourceWidget('Recombu', 'images/recombu-t.png'),
+            _buildSourceWidget('PhoneRadar', 'images/phoneradar-t.jpg'),
+            _buildSourceWidget('GameByte', 'images/gamebyte-t.png'),
+            _buildSourceWidget('New Scientist', 'images/ns-t.jpg'),
+            _buildSourceWidget('ChannelBiz', 'images/channelbiz-t.png'),
+          ]),
+          _buildGenreWidget('Entertainment', [
+            _buildSourceWidget('Ok! Magazine', 'images/ok-e.jpg'),
+            _buildSourceWidget('RadioTimes', 'images/radiotimes-e.png'),
+            _buildSourceWidget('Student Problems', 'images/sp-e.jpg'),
+            _buildSourceWidget('NME', 'images/nme-e.png'),
+            _buildSourceWidget('Funny Vines', 'images/fv-e.jpg'),
+          ]),
+          _buildGenreWidget('Health and Fitness', [
+            _buildSuggestionIndicator(),
+            _buildSourceWidget('Fehresian\nEnergetics', 'images/fehr-h.jpg'),
+            _buildSourceWidget('Healthhunt', 'images/healthhunt-h.jpg'),
+            _buildSourceWidget('Nursing Times', 'images/nt-h.png'),
+            _buildSourceWidget(
+                'Pharmaceutical\nTechnology', 'images/phartech-h.jpg'),
+            _buildSourceWidget('TheMindClan', 'images/themindclan-h.jpg'),
+          ]),
+        ],
       ),
       bottomNavigationBar: buildBottomNavigationBar(context),
     );
