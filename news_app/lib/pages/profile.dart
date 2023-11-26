@@ -92,12 +92,12 @@ class _ProfileState extends State<Profile> {
               ),
             ),
           if (iconData != null && imageUrl == null)
-            Icon(iconData, color: Colors.white),
+            Icon(iconData, color: Colors.black),
           SizedBox(width: 10),
           Text(
             label ?? '',
             style: TextStyle(
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: Color.fromARGB(255, 0, 0, 0),
                 fontSize: 13,
                 fontWeight: FontWeight.w700),
           ),
@@ -254,17 +254,17 @@ class _ProfileState extends State<Profile> {
                         _buildInterestCard(
                             iconData: Icons.computer,
                             label: 'Tech',
-                            bgColor: Color.fromARGB(80, 0, 22, 71)),
+                            bgColor: Color.fromARGB(0, 0, 21, 21)),
                         _buildInterestCard(
                             imageUrl:
                                 "https://st3.depositphotos.com/1071909/19574/i/450/depositphotos_195745476-stock-photo-artificial-intelligence-ai.jpg",
                             label: 'AI',
-                            bgColor: Color.fromARGB(80, 0, 22, 71)),
+                            bgColor: Color.fromARGB(0, 0, 21, 21)),
                         _buildInterestCard(
                             imageUrl:
                                 'https://static4.depositphotos.com/1000507/360/i/600/depositphotos_3606155-stock-photo-multi-coloured-wardrobe-showcase-closeup.jpg',
                             label: 'Fashion',
-                            bgColor: Color.fromARGB(80, 0, 22, 71)),
+                            bgColor: Color.fromARGB(0, 0, 21, 21)),
                       ],
                     ),
                   ],

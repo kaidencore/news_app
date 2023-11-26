@@ -10,7 +10,7 @@ class Signin extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/wallpaper.jpg"),
+            image: AssetImage("images/wallpaper.jpg"),
             fit: BoxFit.cover,
           ),
         ),
