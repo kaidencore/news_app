@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/pages/about.dart';
 import 'package:news_app/pages/home.dart';
+import 'package:news_app/pages/sign_in.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -77,7 +78,10 @@ class _SettingsState extends State<Settings> {
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text('Logout'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Signin()));
+              },
             ),
           ],
         ),

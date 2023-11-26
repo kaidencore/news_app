@@ -11,6 +11,7 @@ import 'package:news_app/pages/category_news.dart';
 import 'package:news_app/pages/newshome.dart';
 import 'package:news_app/pages/profile.dart';
 import 'package:news_app/pages/settings.dart';
+import 'package:news_app/pages/sign_in.dart';
 import 'package:news_app/services/data.dart';
 import 'package:news_app/services/news.dart';
 import 'package:news_app/services/slider_data.dart';
@@ -160,7 +161,10 @@ class _HomeState extends State<Home> {
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text('Logout'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Signin()));
+              },
             ),
           ],
         ),

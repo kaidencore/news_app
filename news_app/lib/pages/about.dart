@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:news_app/pages/home.dart';
 import 'package:news_app/pages/settings.dart';
+import 'package:news_app/pages/sign_in.dart';
 
 class About extends StatefulWidget {
   const About({super.key});
@@ -79,7 +80,10 @@ class _AboutState extends State<About> {
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text('Logout'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Signin()));
+              },
             ),
           ],
         ),

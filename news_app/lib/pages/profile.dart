@@ -3,6 +3,7 @@ import 'package:news_app/pages/about.dart';
 import 'package:news_app/pages/home.dart';
 import 'package:news_app/pages/newshome.dart';
 import 'package:news_app/pages/settings.dart';
+import 'package:news_app/pages/sign_in.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -172,7 +173,10 @@ class _ProfileState extends State<Profile> {
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text('Logout'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Signin()));
+              },
             ),
           ],
         ),
@@ -250,17 +254,17 @@ class _ProfileState extends State<Profile> {
                         _buildInterestCard(
                             iconData: Icons.computer,
                             label: 'Tech',
-                            bgColor: Color(0xFF001747)),
+                            bgColor: Color.fromARGB(80, 0, 22, 71)),
                         _buildInterestCard(
                             imageUrl:
                                 "https://st3.depositphotos.com/1071909/19574/i/450/depositphotos_195745476-stock-photo-artificial-intelligence-ai.jpg",
                             label: 'AI',
-                            bgColor: Color(0xFF001747)),
+                            bgColor: Color.fromARGB(80, 0, 22, 71)),
                         _buildInterestCard(
                             imageUrl:
-                                'https://media.istockphoto.com/id/1252858062/photo/beautiful-woman-wearing-stylish-sunglasses.jpg?s=612x612&w=0&k=20&c=Mn2QI1jobjZur6GCS19KNkencE72yMDPR560leEjWm4=',
+                                'https://static4.depositphotos.com/1000507/360/i/600/depositphotos_3606155-stock-photo-multi-coloured-wardrobe-showcase-closeup.jpg',
                             label: 'Fashion',
-                            bgColor: Color(0xFF001747)),
+                            bgColor: Color.fromARGB(80, 0, 22, 71)),
                       ],
                     ),
                   ],

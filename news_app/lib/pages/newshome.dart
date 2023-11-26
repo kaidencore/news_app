@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:news_app/pages/about.dart';
 import 'package:news_app/pages/home.dart';
 import 'package:news_app/pages/profile.dart';
 import 'package:news_app/pages/settings.dart';
+import 'package:news_app/pages/sign_in.dart';
 
 class NewsHome extends StatefulWidget {
   const NewsHome({super.key});
@@ -59,7 +62,7 @@ class _NewsHomeState extends State<NewsHome> {
       children: [
         Text(
           genre,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 20),
         SingleChildScrollView(
@@ -68,7 +71,20 @@ class _NewsHomeState extends State<NewsHome> {
             children: sourceWidgets,
           ),
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 30),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("See more in "),
+            Text(
+              genre,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+          ],
+        ),
         Divider(),
         SizedBox(height: 20),
       ],
@@ -87,7 +103,7 @@ class _NewsHomeState extends State<NewsHome> {
           SizedBox(height: 8),
           Text(
             name,
-            style: TextStyle(fontSize: 12),
+            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
           ),
         ],
       ),
@@ -99,7 +115,7 @@ class _NewsHomeState extends State<NewsHome> {
       width: 10,
       height: 10,
       decoration: BoxDecoration(
-        color: Colors.orange,
+        color: Color.fromARGB(255, 4, 0, 255),
         shape: BoxShape.circle,
       ),
     );
@@ -172,37 +188,72 @@ class _NewsHomeState extends State<NewsHome> {
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text('Logout'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Signin()));
+              },
             ),
           ],
         ),
       ),
-      body: ListView(
-        padding: EdgeInsets.all(12),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildGenreWidget('Science and Technology', [
-            _buildSourceWidget('Recombu', 'images/recombu-t.png'),
-            _buildSourceWidget('PhoneRadar', 'images/phoneradar-t.jpg'),
-            _buildSourceWidget('GameByte', 'images/gamebyte-t.png'),
-            _buildSourceWidget('New Scientist', 'images/ns-t.jpg'),
-            _buildSourceWidget('ChannelBiz', 'images/channelbiz-t.png'),
-          ]),
-          _buildGenreWidget('Entertainment', [
-            _buildSourceWidget('Ok! Magazine', 'images/ok-e.jpg'),
-            _buildSourceWidget('RadioTimes', 'images/radiotimes-e.png'),
-            _buildSourceWidget('Student Problems', 'images/sp-e.jpg'),
-            _buildSourceWidget('NME', 'images/nme-e.png'),
-            _buildSourceWidget('Funny Vines', 'images/fv-e.jpg'),
-          ]),
-          _buildGenreWidget('Health and Fitness', [
-            _buildSuggestionIndicator(),
-            _buildSourceWidget('Fehresian\nEnergetics', 'images/fehr-h.jpg'),
-            _buildSourceWidget('Healthhunt', 'images/healthhunt-h.jpg'),
-            _buildSourceWidget('Nursing Times', 'images/nt-h.png'),
-            _buildSourceWidget(
-                'Pharmaceutical\nTechnology', 'images/phartech-h.jpg'),
-            _buildSourceWidget('TheMindClan', 'images/themindclan-h.jpg'),
-          ]),
+          Container(
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.star, color: Colors.orange),
+                SizedBox(width: 8),
+                Text(
+                  'Suggested Sources',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.all(12),
+              children: [
+                _buildGenreWidget('Science and Technology', [
+                  _buildSourceWidget('Recombu', 'images/recombu-t.png'),
+                  _buildSourceWidget('PhoneRadar', 'images/phoneradar-t.jpg'),
+                  _buildSourceWidget('GameByte', 'images/gamebyte-t.png'),
+                  _buildSuggestionIndicator(),
+                  _buildSourceWidget('New Scientist', 'images/ns-t.jpg'),
+                  _buildSourceWidget('ChannelBiz', 'images/channelbiz-t.png'),
+                ]),
+                _buildGenreWidget('Entertainment', [
+                  _buildSuggestionIndicator(),
+                  _buildSourceWidget('Ok! Magazine', 'images/ok-e.jpg'),
+                  _buildSourceWidget('RadioTimes', 'images/radiotimes-e.png'),
+                  _buildSourceWidget('Student Problems', 'images/sp-e.jpg'),
+                  _buildSourceWidget('NME', 'images/nme-e.png'),
+                  _buildSourceWidget('Funny Vines', 'images/fv-e.jpg'),
+                ]),
+                _buildGenreWidget('Health and Fitness', [
+                  _buildSourceWidget(
+                      'Fehresian\nEnergetics', 'images/fehr-h.jpg'),
+                  _buildSuggestionIndicator(),
+                  _buildSourceWidget('Healthhunt', 'images/healthhunt-h.jpg'),
+                  _buildSourceWidget('Nursing Times', 'images/nt-h.png'),
+                  _buildSourceWidget(
+                      'Pharmaceutical\nTechnology', 'images/phartech-h.jpg'),
+                  _buildSourceWidget('TheMindClan', 'images/themindclan-h.jpg'),
+                ]),
+              ],
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: buildBottomNavigationBar(context),
